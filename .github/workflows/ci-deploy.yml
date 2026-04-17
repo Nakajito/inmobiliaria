@@ -1,0 +1,93 @@
+name: CI + Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Django checks + djlint + tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: aperture
+          POSTGRES_USER: aperture
+          POSTGRES_PASSWORD: aperture
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U aperture"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DJANGO_SECRET_KEY: ci-secret-not-used-in-prod
+      DJANGO_DEBUG: "False"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      DB_ENGINE: postgres
+      DB_NAME: aperture
+      DB_USER: aperture
+      DB_PASSWORD: aperture
+      DB_HOST: 127.0.0.1
+      DB_PORT: "5432"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Lint templates (djlint)
+        run: uv run djlint templates/ --check
+
+      - name: Django system check
+        run: uv run python manage.py check
+
+      - name: Verify no pending migrations
+        run: uv run python manage.py makemigrations --check --dry-run
+
+      - name: Run tests
+        run: uv run python manage.py test --verbosity 2
+
+      - name: Collectstatic (dry run)
+        run: uv run python manage.py collectstatic --noinput --dry-run
+
+  deploy:
+    name: Trigger Coolify deploy
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Call Coolify deploy webhook
+        env:
+          COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
+          COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK_URL" ] || [ -z "$COOLIFY_API_TOKEN" ]; then
+            echo "::error::Missing COOLIFY_WEBHOOK_URL or COOLIFY_API_TOKEN secret."
+            exit 1
+          fi
+          curl -fsSL --retry 3 --retry-delay 5 \
+            -H "Authorization: Bearer $COOLIFY_API_TOKEN" \
+            "$COOLIFY_WEBHOOK_URL"
+          echo "Deploy webhook invoked for commit ${GITHUB_SHA}."

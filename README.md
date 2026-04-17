@@ -46,3 +46,38 @@ createuser aperture --pwprompt
 - `/properties/<slug>/` — detail page with gallery, specs, features, agent inquiry form
 - `/about/` — story, philosophy, team
 - `/contact/` — inquiry form
+
+## Deployment
+
+CI + deploy pipeline en [.github/workflows/ci-deploy.yml](.github/workflows/ci-deploy.yml).
+
+- **CI** (push + PR a `main`): djlint, `manage.py check`, `makemigrations --check`, tests, `collectstatic --dry-run` contra Postgres 16 efímero.
+- **Deploy** (solo push a `main` tras CI verde): llama al webhook de Coolify con token Bearer. Coolify rebuild con Nixpacks desde git.
+
+### Secrets GitHub
+
+Settings → Secrets and variables → Actions → New repository secret:
+
+| Secret | Fuente en Coolify |
+|---|---|
+| `COOLIFY_WEBHOOK_URL` | App → **Webhooks** → URL completa de deploy (incluye `?uuid=...`) |
+| `COOLIFY_API_TOKEN` | Perfil → **Keys & Tokens** → API tokens → crear con scope `deploy` |
+
+### Config requerida en Coolify
+
+Nixpacks **no** corre `migrate` ni `collectstatic` solo. Ajustar en la app de Coolify:
+
+- **Environment variables**: `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS=<dominio>`, `DB_ENGINE=postgres`, `DB_*` apuntando al Postgres del stack.
+- **Pre-deploy command**:
+  ```bash
+  python manage.py migrate --noinput && python manage.py collectstatic --noinput
+  ```
+- **Start command**:
+  ```bash
+  gunicorn aperture.wsgi --bind 0.0.0.0:8000
+  ```
+- Vincular base Postgres como servicio dentro del proyecto Coolify.
+
+### Trigger manual
+
+Actions tab → **CI + Deploy** → Run workflow (usa `workflow_dispatch`).

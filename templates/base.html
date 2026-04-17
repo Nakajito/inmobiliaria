@@ -1,13 +1,18 @@
-{% load static humanize %}<!DOCTYPE html>
+{% load static humanize %}
+<!DOCTYPE html>
 <html class="light" lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>{% block title %}{{ site_settings.brand_name|default:"Aperture Estate" }}{% endblock %}</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>
+            {% block title %}{{ site_settings.brand_name|default:"Aperture Estate" }}{% endblock %}
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+              rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+              rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script>
   tailwind.config = {
     darkMode: "class",
     theme: {
@@ -52,20 +57,22 @@
       },
     },
   };
-</script>
-<link href="{% static 'css/site.css' %}" rel="stylesheet"/>
-{% block extra_head %}{% endblock %}
-</head>
-<body class="bg-surface font-body text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
-{% include "partials/nav.html" %}
-{% if messages %}
-  <div class="fixed top-24 right-6 z-[60] flex flex-col gap-3 max-w-sm">
-    {% for m in messages %}
-      <div class="bg-white shadow-[0_4px_40px_rgba(0,0,0,0.08)] border-l-2 border-secondary px-6 py-4 font-label text-xs tracking-[0.15em] uppercase">{{ m }}</div>
-    {% endfor %}
-  </div>
-{% endif %}
-{% block content %}{% endblock %}
-{% include "partials/footer.html" %}
-</body>
+        </script>
+        <link href="{% static 'css/site.css' %}" rel="stylesheet" />
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body class="bg-surface font-body text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+        {% include "partials/nav.html" %}
+        {% if messages %}
+            <div class="fixed top-24 right-6 z-[60] flex flex-col gap-3 max-w-sm">
+                {% for m in messages %}
+                    <div class="bg-white shadow-[0_4px_40px_rgba(0,0,0,0.08)] border-l-2 border-secondary px-6 py-4 font-label text-xs tracking-[0.15em] uppercase">
+                        {{ m }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+        {% include "partials/footer.html" %}
+    </body>
 </html>

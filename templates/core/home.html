@@ -1,150 +1,184 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% block title %}{{ site_settings.brand_name }} — Editorial Real Estate{% endblock %}
-
 {% block content %}
-<header class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <img class="w-full h-full object-cover grayscale-[20%] brightness-[0.85]"
-         alt="Hero"
-         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0-pkw4RNEFj8Zn2JTvkyhXeIrotqdq_YEnj_5cwJqgqSdGoO-8Kb08hPWWnNzmty_RmQfUJHgw5c1GpYZGwpN646TUgvHBpVW3Qgqd6lixN4zPZOQEFJmpR7OnhWkTaeHG4z8nW-cea_7IcCC-ewXQWMAN_2SuSbzf5fxnQisjFFlkzBJZF4ls0lmhxjT85vRYCAKcDqNyBrQGjDO3SCcimdOvsJ09rlImiZ0Dc0jwrv3bpSpQEB9jsqZtkij2d_e2NXwaZ2W6d8"/>
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
-  </div>
-  <div class="relative z-10 w-full max-w-screen-2xl mx-auto px-8">
-    <div class="max-w-3xl">
-      <span class="inline-block text-secondary font-label text-xs tracking-[0.3em] uppercase mb-6">Established {{ site_settings.established_year|default:1984 }}</span>
-      <h1 class="font-serif text-6xl md:text-8xl text-white tracking-tighter leading-[0.9] mb-12">
-        Find Your <br/><span class="italic">Legacy</span>
-      </h1>
-      <form method="get" action="{% url 'properties:listing' %}" class="bg-white p-2 shadow-2xl flex flex-col md:flex-row gap-2 max-w-2xl">
-        <div class="flex-1 px-4 py-3 flex items-center gap-3 border-b md:border-b-0 md:border-r border-outline-variant/30">
-          <span class="material-symbols-outlined text-secondary">location_on</span>
-          <input name="q" class="w-full border-none focus:ring-0 placeholder:text-zinc-400 text-sm font-body"
-                 placeholder="Where is home?" type="text"/>
+    <header class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover grayscale-[20%] brightness-[0.85]"
+                 alt="Hero"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0-pkw4RNEFj8Zn2JTvkyhXeIrotqdq_YEnj_5cwJqgqSdGoO-8Kb08hPWWnNzmty_RmQfUJHgw5c1GpYZGwpN646TUgvHBpVW3Qgqd6lixN4zPZOQEFJmpR7OnhWkTaeHG4z8nW-cea_7IcCC-ewXQWMAN_2SuSbzf5fxnQisjFFlkzBJZF4ls0lmhxjT85vRYCAKcDqNyBrQGjDO3SCcimdOvsJ09rlImiZ0Dc0jwrv3bpSpQEB9jsqZtkij2d_e2NXwaZ2W6d8" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
         </div>
-        <div class="flex-1 px-4 py-3 flex items-center gap-3">
-          <span class="material-symbols-outlined text-secondary">home_work</span>
-          <select name="type" class="w-full border-none focus:ring-0 text-zinc-700 text-sm font-body bg-transparent">
-            <option value="">Property Type</option>
-            {% for t in property_types %}<option value="{{ t.slug }}">{{ t.name }}</option>{% endfor %}
-          </select>
-        </div>
-        <button class="gold-gradient text-white px-10 py-4 font-label text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all">Search</button>
-      </form>
-    </div>
-  </div>
-</header>
-
-<section class="py-32 bg-surface">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="flex flex-col lg:flex-row gap-20 items-end mb-24">
-      <div class="lg:w-1/2">
-        <span class="text-secondary font-label text-xs tracking-[0.2em] uppercase">The Collection</span>
-        <h2 class="font-serif text-5xl mt-4 leading-tight">Curation Above All Else.</h2>
-      </div>
-      <div class="lg:w-1/2">
-        <p class="font-body text-zinc-500 text-lg leading-relaxed max-w-lg">
-          We don't represent buildings; we represent the chapters of your life yet to be written. Each estate is selected for its architectural integrity and soul.
-        </p>
-      </div>
-    </div>
-    {% if hero_properties %}
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
-      {% with p0=hero_properties.0 %}
-      <a href="{{ p0.get_absolute_url }}" class="md:col-span-8 group relative overflow-hidden bg-surface-container-high">
-        {% if p0.cover_src %}<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ p0.cover_src }}" alt="{{ p0.title }}"/>{% endif %}
-        <div class="absolute bottom-0 left-0 p-10 bg-gradient-to-t from-primary/80 to-transparent w-full">
-          <p class="text-white/70 font-label text-xs tracking-widest uppercase mb-2">{{ p0.location }}</p>
-          <h3 class="text-white font-serif text-3xl">{{ p0.title }}</h3>
-          <div class="mt-4 flex gap-6 text-white/90 text-sm">
-            <span>{{ p0.bedrooms }} BEDS</span><span>{{ p0.bathrooms }} BATHS</span><span>{{ p0.square_feet|intcomma }} SQFT</span>
-          </div>
-        </div>
-      </a>
-      {% endwith %}
-      <div class="md:col-span-4 grid grid-rows-2 gap-6">
-        {% if hero_properties|length > 1 %}
-          {% with p1=hero_properties.1 %}
-          <a href="{{ p1.get_absolute_url }}" class="group relative overflow-hidden bg-surface-container-high">
-            {% if p1.cover_src %}<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ p1.cover_src }}" alt="{{ p1.title }}"/>{% endif %}
-            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="bg-white px-6 py-3 font-label text-xs font-bold uppercase tracking-widest">View Gallery</span>
+        <div class="relative z-10 w-full max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-3xl">
+                <span class="inline-block text-secondary font-label text-xs tracking-[0.3em] uppercase mb-6">Established {{ site_settings.established_year|default:1984 }}</span>
+                <h1 class="font-serif text-6xl md:text-8xl text-white tracking-tighter leading-[0.9] mb-12">
+                    Find Your
+                    <br />
+                    <span class="italic">Legacy</span>
+                </h1>
+                <form method="get"
+                      action="{% url 'properties:listing' %}"
+                      class="bg-white p-2 shadow-2xl flex flex-col md:flex-row gap-2 max-w-2xl">
+                    <div class="flex-1 px-4 py-3 flex items-center gap-3 border-b md:border-b-0 md:border-r border-outline-variant/30">
+                        <span class="material-symbols-outlined text-secondary">location_on</span>
+                        <input name="q"
+                               class="w-full border-none focus:ring-0 placeholder:text-zinc-400 text-sm font-body"
+                               placeholder="Where is home?"
+                               type="text" />
+                    </div>
+                    <div class="flex-1 px-4 py-3 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary">home_work</span>
+                        <select name="type"
+                                class="w-full border-none focus:ring-0 text-zinc-700 text-sm font-body bg-transparent">
+                            <option value="">Property Type</option>
+                            {% for t in property_types %}<option value="{{ t.slug }}">{{ t.name }}</option>{% endfor %}
+                        </select>
+                    </div>
+                    <button class="gold-gradient text-white px-10 py-4 font-label text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all">
+                        Search
+                    </button>
+                </form>
             </div>
-          </a>
-          {% endwith %}
-        {% endif %}
-        <div class="bg-primary p-12 flex flex-col justify-between">
-          <div>
-            <span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6">auto_awesome</span>
-            <h4 class="text-white font-serif text-2xl leading-snug">Private Viewing Experiences</h4>
-          </div>
-          <a class="text-secondary-fixed-dim font-label text-xs tracking-widest uppercase flex items-center gap-2 group" href="{% url 'core:contact' %}">
-            Inquire Now <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
-          </a>
         </div>
-      </div>
-    </div>
+    </header>
+    <section class="py-32 bg-surface">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col lg:flex-row gap-20 items-end mb-24">
+                <div class="lg:w-1/2">
+                    <span class="text-secondary font-label text-xs tracking-[0.2em] uppercase">The Collection</span>
+                    <h2 class="font-serif text-5xl mt-4 leading-tight">Curation Above All Else.</h2>
+                </div>
+                <div class="lg:w-1/2">
+                    <p class="font-body text-zinc-500 text-lg leading-relaxed max-w-lg">
+                        We don't represent buildings; we represent the chapters of your life yet to be written. Each estate is selected for its architectural integrity and soul.
+                    </p>
+                </div>
+            </div>
+            {% if hero_properties %}
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+                    {% with p0=hero_properties.0 %}
+                        <a href="{{ p0.get_absolute_url }}"
+                           class="md:col-span-8 group relative overflow-hidden bg-surface-container-high">
+                            {% if p0.cover_src %}
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                     src="{{ p0.cover_src }}"
+                                     alt="{{ p0.title }}" />
+                            {% endif %}
+                            <div class="absolute bottom-0 left-0 p-10 bg-gradient-to-t from-primary/80 to-transparent w-full">
+                                <p class="text-white/70 font-label text-xs tracking-widest uppercase mb-2">{{ p0.location }}</p>
+                                <h3 class="text-white font-serif text-3xl">{{ p0.title }}</h3>
+                                <div class="mt-4 flex gap-6 text-white/90 text-sm">
+                                    <span>{{ p0.bedrooms }} BEDS</span><span>{{ p0.bathrooms }} BATHS</span><span>{{ p0.square_feet|intcomma }} SQFT</span>
+                                </div>
+                            </div>
+                        </a>
+                    {% endwith %}
+                    <div class="md:col-span-4 grid grid-rows-2 gap-6">
+                        {% if hero_properties|length > 1 %}
+                            {% with p1=hero_properties.1 %}
+                                <a href="{{ p1.get_absolute_url }}"
+                                   class="group relative overflow-hidden bg-surface-container-high">
+                                    {% if p1.cover_src %}
+                                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                             src="{{ p1.cover_src }}"
+                                             alt="{{ p1.title }}" />
+                                    {% endif %}
+                                    <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span class="bg-white px-6 py-3 font-label text-xs font-bold uppercase tracking-widest">View Gallery</span>
+                                    </div>
+                                </a>
+                            {% endwith %}
+                        {% endif %}
+                        <div class="bg-primary p-12 flex flex-col justify-between">
+                            <div>
+                                <span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6">auto_awesome</span>
+                                <h4 class="text-white font-serif text-2xl leading-snug">Private Viewing Experiences</h4>
+                            </div>
+                            <a class="text-secondary-fixed-dim font-label text-xs tracking-widest uppercase flex items-center gap-2 group"
+                               href="{% url 'core:contact' %}">
+                                Inquire Now <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <section class="py-40 bg-zinc-100">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+            <span class="material-symbols-outlined text-secondary text-5xl mb-8">format_quote</span>
+            <blockquote class="font-serif text-4xl md:text-5xl italic leading-tight text-primary mb-10">
+                "Architecture is the learned game, correct and magnificent, of forms assembled in the light. We help you find the light."
+            </blockquote>
+            <cite class="not-italic font-label text-sm tracking-[0.3em] uppercase text-zinc-500">— Elias Aurelian, Founder</cite>
+        </div>
+    </section>
+    {% if featured_properties %}
+        <section class="py-32">
+            <div class="max-w-screen-2xl mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {% for p in featured_properties %}
+                        {% include "partials/property_card.html" with property=p %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
     {% endif %}
-  </div>
-</section>
-
-<section class="py-40 bg-zinc-100">
-  <div class="max-w-4xl mx-auto px-8 text-center">
-    <span class="material-symbols-outlined text-secondary text-5xl mb-8">format_quote</span>
-    <blockquote class="font-serif text-4xl md:text-5xl italic leading-tight text-primary mb-10">
-      "Architecture is the learned game, correct and magnificent, of forms assembled in the light. We help you find the light."
-    </blockquote>
-    <cite class="not-italic font-label text-sm tracking-[0.3em] uppercase text-zinc-500">— Elias Aurelian, Founder</cite>
-  </div>
-</section>
-
-{% if featured_properties %}
-<section class="py-32">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-      {% for p in featured_properties %}{% include "partials/property_card.html" with property=p %}{% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{% if testimonials %}
-<section class="py-32 bg-surface-container-low overflow-hidden">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <h3 class="font-serif text-4xl mb-16">The Words of Our Patrons</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      {% for t in testimonials %}
-      <div class="bg-surface-container-lowest p-12 shadow-[0_4px_40px_rgba(0,0,0,0.02)] {% if forloop.counter0|divisibleby:2 %}{% else %}md:mt-12{% endif %}">
-        <div class="flex text-secondary mb-6">
-          {% for _ in t.rating_range %}<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>{% endfor %}
+    {% if testimonials %}
+        <section class="py-32 bg-surface-container-low overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto px-8">
+                <h3 class="font-serif text-4xl mb-16">The Words of Our Patrons</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    {% for t in testimonials %}
+                        <div class="bg-surface-container-lowest p-12 shadow-[0_4px_40px_rgba(0,0,0,0.02)] {% if forloop.counter0|divisibleby:2 %}{% else %}md:mt-12{% endif %}">
+                            <div class="flex text-secondary mb-6">
+                                {% for _ in t.rating_range %}
+                                    <span class="material-symbols-outlined"
+                                          style="font-variation-settings: 'FILL' 1">star</span>
+                                {% endfor %}
+                            </div>
+                            <p class="font-body text-lg italic text-zinc-600 mb-8 leading-relaxed">"{{ t.quote }}"</p>
+                            <div class="flex items-center gap-4">
+                                {% if t.photo_url %}
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img class="w-full h-full object-cover"
+                                             src="{{ t.photo_url }}"
+                                             alt="{{ t.author }}" />
+                                    </div>
+                                {% endif %}
+                                <div>
+                                    <p class="font-label text-xs font-bold uppercase tracking-widest">{{ t.author }}</p>
+                                    <p class="text-[10px] text-zinc-400 uppercase">{{ t.role }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <section class="py-32 bg-primary">
+        <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="max-w-xl">
+                <h3 class="font-serif text-4xl text-white mb-4">The Aperture Journal</h3>
+                <p class="text-on-primary-container text-lg font-body">
+                    Exclusive market insights and early access to off-market listings, delivered monthly.
+                </p>
+            </div>
+            <form method="post"
+                  action="{% url 'core:newsletter' %}"
+                  class="w-full md:w-auto flex flex-col sm:flex-row gap-0 border-b border-secondary/50 pb-2">
+                {% csrf_token %}
+                <input name="email"
+                       type="email"
+                       required
+                       placeholder="YOUR EMAIL ADDRESS"
+                       class="bg-transparent border-none focus:ring-0 text-white placeholder:text-zinc-600 font-label text-sm uppercase tracking-widest px-0 w-full sm:w-64" />
+                <button class="text-secondary font-label text-sm uppercase tracking-widest font-bold py-2 hover:text-secondary-fixed transition-colors">
+                    Subscribe
+                </button>
+            </form>
         </div>
-        <p class="font-body text-lg italic text-zinc-600 mb-8 leading-relaxed">"{{ t.quote }}"</p>
-        <div class="flex items-center gap-4">
-          {% if t.photo_url %}<div class="w-12 h-12 rounded-full overflow-hidden"><img class="w-full h-full object-cover" src="{{ t.photo_url }}" alt="{{ t.author }}"/></div>{% endif %}
-          <div>
-            <p class="font-label text-xs font-bold uppercase tracking-widest">{{ t.author }}</p>
-            <p class="text-[10px] text-zinc-400 uppercase">{{ t.role }}</p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<section class="py-32 bg-primary">
-  <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-12">
-    <div class="max-w-xl">
-      <h3 class="font-serif text-4xl text-white mb-4">The Aperture Journal</h3>
-      <p class="text-on-primary-container text-lg font-body">Exclusive market insights and early access to off-market listings, delivered monthly.</p>
-    </div>
-    <form method="post" action="{% url 'core:newsletter' %}" class="w-full md:w-auto flex flex-col sm:flex-row gap-0 border-b border-secondary/50 pb-2">
-      {% csrf_token %}
-      <input name="email" type="email" required placeholder="YOUR EMAIL ADDRESS"
-             class="bg-transparent border-none focus:ring-0 text-white placeholder:text-zinc-600 font-label text-sm uppercase tracking-widest px-0 w-full sm:w-64"/>
-      <button class="text-secondary font-label text-sm uppercase tracking-widest font-bold py-2 hover:text-secondary-fixed transition-colors">Subscribe</button>
-    </form>
-  </div>
-</section>
+    </section>
 {% endblock %}

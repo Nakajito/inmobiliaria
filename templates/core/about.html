@@ -1,131 +1,149 @@
 {% extends "base.html" %}
 {% block title %}About — {{ site_settings.brand_name }}{% endblock %}
-
 {% block content %}
-<main class="pt-24 overflow-x-hidden">
-  <section class="relative min-h-[720px] flex items-center px-8 md:px-16 max-w-screen-2xl mx-auto py-20">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-6 z-10">
-        <span class="uppercase tracking-[0.2em] text-secondary font-bold text-xs mb-6 block">Established {{ site_settings.established_year|default:1984 }}</span>
-        <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-primary mb-8">
-          The Art of <br/><i class="font-normal italic">Curation.</i>
-        </h1>
-        <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-md leading-relaxed">
-          We don't just list properties; we curate architectural legacies. Every estate in our portfolio is a testament to timeless design and unparalleled craftsmanship.
-        </p>
-      </div>
-      <div class="md:col-span-6 relative">
-        <div class="aspect-[4/5] bg-surface-container-high overflow-hidden aperture-mask">
-          <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-               alt="Architecture"
-               src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1OZ8PmhGvEiHWfC54al2bP8-gpkhGBliJrFvCOx2jZQM9ZoXt7Lcosrra78u4DawHDOWpO0zrn-EyAzwO5HzZE7pBGFzyMKKtUXLgT39geYAXW7N_oDHMsUUsSMCcDH7zU2-TBMDLZj4aRNAxhu6R6JBkI5ZehZicdm5dNioqLhYQHd3S7jFpLqPjVu-ajSOA6blV9w_blaaOoSlOa_FpuGtzHO63B9rfpAx6siMoxLLPehLumoAcOhLO7yT96PbGPBDKNSI-d5E"/>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-32 bg-surface-container-low px-8 md:px-16">
-    <div class="max-w-screen-2xl mx-auto">
-      <div class="flex flex-col md:flex-row gap-24 items-start">
-        <div class="md:w-1/3 md:sticky md:top-32">
-          <h2 class="font-headline text-4xl md:text-5xl text-primary leading-tight">Our <br/>Foundation</h2>
-          <div class="w-12 h-1 bg-secondary mt-8"></div>
-        </div>
-        <div class="md:w-2/3 space-y-12">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <p class="font-body text-xl leading-relaxed text-on-surface">
-              Founded with a vision to bridge the gap between high-art and real estate, Aperture Estate emerged from the belief that a home is the most significant sculpture one will ever inhabit.
-            </p>
-            <p class="font-body text-lg leading-relaxed text-on-surface-variant">
-              For four decades, we have operated at the intersection of architectural heritage and modern luxury. Our team serves as custodians of excellence, ensuring that every transaction honors the soul of the structure.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-32 bg-white px-8 md:px-16 relative overflow-hidden">
-    <div class="max-w-screen-2xl mx-auto relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-24">
-        <span class="uppercase tracking-[0.1em] text-secondary-fixed-dim font-medium text-sm mb-4 block">The Philosophy</span>
-        <h2 class="font-headline text-5xl md:text-6xl text-primary mb-8 italic">Defined by Discernment</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
-          <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">architecture</span>
-          <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Architectural Integrity</h3>
-          <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">We represent only those properties that demonstrate a clear, uncompromising design language.</p>
-        </div>
-        <div class="p-12 bg-surface-container-low group hover:bg-primary transition-colors duration-500">
-          <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">verified</span>
-          <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Bespoke Curation</h3>
-          <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">Each client relationship is handled with the precision of a private gallery acquisition.</p>
-        </div>
-        <div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
-          <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">public</span>
-          <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Global Perspective</h3>
-          <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">Our network spans continents, connecting rare architecture with discerning global stewards.</p>
-        </div>
-      </div>
-    </div>
-    <div class="absolute bottom-0 right-0 font-headline text-[15rem] leading-none text-zinc-100 -mb-20 select-none -z-0">EXCELLENCE</div>
-  </section>
-
-  {% if agents %}
-  <section class="py-32 px-8 md:px-16 max-w-screen-2xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-      <div class="max-w-xl">
-        <h2 class="font-headline text-5xl md:text-6xl text-primary mb-6">Our Stewards</h2>
-        <p class="font-body text-lg text-on-surface-variant">A specialized team of architectural historians, design consultants, and real estate veterans.</p>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
-      {% for a in agents %}
-      <div class="group relative overflow-hidden aspect-[3/4] bg-zinc-200">
-        {% if a.image_src %}
-          <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-               src="{{ a.image_src }}" alt="{{ a.name }}"/>
+    <main class="pt-24 overflow-x-hidden">
+        <section class="relative min-h-[720px] flex items-center px-8 md:px-16 max-w-screen-2xl mx-auto py-20">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-6 z-10">
+                    <span class="uppercase tracking-[0.2em] text-secondary font-bold text-xs mb-6 block">Established {{ site_settings.established_year|default:1984 }}</span>
+                    <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-primary mb-8">
+                        The Art of
+                        <br />
+                        <i class="font-normal italic">Curation.</i>
+                    </h1>
+                    <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-md leading-relaxed">
+                        We don't just list properties; we curate architectural legacies. Every estate in our portfolio is a testament to timeless design and unparalleled craftsmanship.
+                    </p>
+                </div>
+                <div class="md:col-span-6 relative">
+                    <div class="aspect-[4/5] bg-surface-container-high overflow-hidden aperture-mask">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                             alt="Architecture"
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1OZ8PmhGvEiHWfC54al2bP8-gpkhGBliJrFvCOx2jZQM9ZoXt7Lcosrra78u4DawHDOWpO0zrn-EyAzwO5HzZE7pBGFzyMKKtUXLgT39geYAXW7N_oDHMsUUsSMCcDH7zU2-TBMDLZj4aRNAxhu6R6JBkI5ZehZicdm5dNioqLhYQHd3S7jFpLqPjVu-ajSOA6blV9w_blaaOoSlOa_FpuGtzHO63B9rfpAx6siMoxLLPehLumoAcOhLO7yT96PbGPBDKNSI-d5E" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-32 bg-surface-container-low px-8 md:px-16">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-24 items-start">
+                    <div class="md:w-1/3 md:sticky md:top-32">
+                        <h2 class="font-headline text-4xl md:text-5xl text-primary leading-tight">
+                            Our
+                            <br />
+                            Foundation
+                        </h2>
+                        <div class="w-12 h-1 bg-secondary mt-8"></div>
+                    </div>
+                    <div class="md:w-2/3 space-y-12">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <p class="font-body text-xl leading-relaxed text-on-surface">
+                                Founded with a vision to bridge the gap between high-art and real estate, Aperture Estate emerged from the belief that a home is the most significant sculpture one will ever inhabit.
+                            </p>
+                            <p class="font-body text-lg leading-relaxed text-on-surface-variant">
+                                For four decades, we have operated at the intersection of architectural heritage and modern luxury. Our team serves as custodians of excellence, ensuring that every transaction honors the soul of the structure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-32 bg-white px-8 md:px-16 relative overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-24">
+                    <span class="uppercase tracking-[0.1em] text-secondary-fixed-dim font-medium text-sm mb-4 block">The Philosophy</span>
+                    <h2 class="font-headline text-5xl md:text-6xl text-primary mb-8 italic">Defined by Discernment</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">architecture</span>
+                        <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Architectural Integrity</h3>
+                        <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">
+                            We represent only those properties that demonstrate a clear, uncompromising design language.
+                        </p>
+                    </div>
+                    <div class="p-12 bg-surface-container-low group hover:bg-primary transition-colors duration-500">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">verified</span>
+                        <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Bespoke Curation</h3>
+                        <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">
+                            Each client relationship is handled with the precision of a private gallery acquisition.
+                        </p>
+                    </div>
+                    <div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">public</span>
+                        <h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Global Perspective</h3>
+                        <p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">
+                            Our network spans continents, connecting rare architecture with discerning global stewards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-0 right-0 font-headline text-[15rem] leading-none text-zinc-100 -mb-20 select-none -z-0">
+                EXCELLENCE
+            </div>
+        </section>
+        {% if agents %}
+            <section class="py-32 px-8 md:px-16 max-w-screen-2xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                    <div class="max-w-xl">
+                        <h2 class="font-headline text-5xl md:text-6xl text-primary mb-6">Our Stewards</h2>
+                        <p class="font-body text-lg text-on-surface-variant">
+                            A specialized team of architectural historians, design consultants, and real estate veterans.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+                    {% for a in agents %}
+                        <div class="group relative overflow-hidden aspect-[3/4] bg-zinc-200">
+                            {% if a.image_src %}
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                                     src="{{ a.image_src }}"
+                                     alt="{{ a.name }}" />
+                            {% endif %}
+                            <div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
+                                <h4 class="font-headline text-xl text-white">{{ a.name }}</h4>
+                                <p class="text-on-primary-container text-sm uppercase tracking-wider">{{ a.role }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
         {% endif %}
-        <div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
-          <h4 class="font-headline text-xl text-white">{{ a.name }}</h4>
-          <p class="text-on-primary-container text-sm uppercase tracking-wider">{{ a.role }}</p>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  <section class="py-32 px-8 md:px-16 bg-primary text-on-primary">
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-16">
-      <div class="md:w-1/2">
-        <h2 class="font-headline text-5xl md:text-7xl mb-8 leading-tight">Join the <br/><i class="italic font-normal">Inner Circle.</i></h2>
-        <p class="text-on-primary-container text-lg mb-12 max-w-md leading-relaxed">
-          Become part of our global network of architecture enthusiasts and real estate investors. Receive priority access to unlisted estates.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="{% url 'core:contact' %}" class="bg-gradient-to-br from-secondary to-secondary-container text-on-secondary px-10 py-4 font-label uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform">Inquire Now</a>
-          <a href="{% url 'properties:listing' %}" class="border border-outline-variant/30 text-on-primary px-10 py-4 font-label uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">View Portfolio</a>
-        </div>
-      </div>
-      <div class="md:w-1/2 w-full">
-        <div class="p-12 border border-outline-variant/20 space-y-8">
-          <div>
-            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Global HQ</p>
-            <p class="font-headline text-2xl">{{ site_settings.hq_address }}</p>
-          </div>
-          <div>
-            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Email</p>
-            <p class="font-headline text-2xl">{{ site_settings.email }}</p>
-          </div>
-          <div>
-            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Phone</p>
-            <p class="font-headline text-2xl">{{ site_settings.phone }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+        <section class="py-32 px-8 md:px-16 bg-primary text-on-primary">
+            <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="font-headline text-5xl md:text-7xl mb-8 leading-tight">
+                        Join the
+                        <br />
+                        <i class="italic font-normal">Inner Circle.</i>
+                    </h2>
+                    <p class="text-on-primary-container text-lg mb-12 max-w-md leading-relaxed">
+                        Become part of our global network of architecture enthusiasts and real estate investors. Receive priority access to unlisted estates.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="{% url 'core:contact' %}"
+                           class="bg-gradient-to-br from-secondary to-secondary-container text-on-secondary px-10 py-4 font-label uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform">Inquire Now</a>
+                        <a href="{% url 'properties:listing' %}"
+                           class="border border-outline-variant/30 text-on-primary px-10 py-4 font-label uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full">
+                    <div class="p-12 border border-outline-variant/20 space-y-8">
+                        <div>
+                            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Global HQ</p>
+                            <p class="font-headline text-2xl">{{ site_settings.hq_address }}</p>
+                        </div>
+                        <div>
+                            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Email</p>
+                            <p class="font-headline text-2xl">{{ site_settings.email }}</p>
+                        </div>
+                        <div>
+                            <p class="uppercase tracking-widest text-secondary mb-2 text-xs">Phone</p>
+                            <p class="font-headline text-2xl">{{ site_settings.phone }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

@@ -1,23 +1,25 @@
 {% load static %}
 <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_4px_40px_rgba(0,0,0,0.04)]">
-  <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
-    <a href="{% url 'core:home' %}" class="font-serif text-2xl font-bold tracking-tighter text-zinc-900">
-      {{ site_settings.brand_name|default:"Aperture Estate" }}
-    </a>
-    <div class="hidden md:flex items-center gap-10">
-      {% with active=request.resolver_match.url_name %}
-      <a class="font-sans text-base transition-colors {% if active == 'home' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
-         href="{% url 'core:home' %}">Home</a>
-      <a class="font-sans text-base transition-colors {% if active == 'listing' or active == 'detail' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
-         href="{% url 'properties:listing' %}">Properties</a>
-      <a class="font-sans text-base transition-colors {% if active == 'about' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
-         href="{% url 'core:about' %}">About</a>
-      <a class="font-sans text-base transition-colors {% if active == 'contact' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
-         href="{% url 'core:contact' %}">Contact</a>
-      {% endwith %}
+    <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+        <a href="{% url 'core:home' %}"
+           class="font-serif text-2xl font-bold tracking-tighter text-zinc-900">
+            {{ site_settings.brand_name|default:"Aperture Estate" }}
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            {% with active=request.resolver_match.url_name %}
+                <a class="font-sans text-base transition-colors {% if active == 'home' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
+                   href="{% url 'core:home' %}">Home</a>
+                <a class="font-sans text-base transition-colors {% if active == 'listing' or active == 'detail' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
+                   href="{% url 'properties:listing' %}">Properties</a>
+                <a class="font-sans text-base transition-colors {% if active == 'about' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
+                   href="{% url 'core:about' %}">About</a>
+                <a class="font-sans text-base transition-colors {% if active == 'contact' %}text-zinc-900 border-b-2 border-amber-700 pb-1{% else %}text-zinc-500 hover:text-zinc-900{% endif %}"
+                   href="{% url 'core:contact' %}">Contact</a>
+            {% endwith %}
+        </div>
+        <a href="{% url 'core:contact' %}"
+           class="bg-primary text-on-primary px-6 py-2.5 text-sm font-medium tracking-tight hover:scale-[1.02] transition-transform duration-300 active:scale-95">
+            Book a Viewing
+        </a>
     </div>
-    <a href="{% url 'core:contact' %}" class="bg-primary text-on-primary px-6 py-2.5 text-sm font-medium tracking-tight hover:scale-[1.02] transition-transform duration-300 active:scale-95">
-      Book a Viewing
-    </a>
-  </div>
 </nav>
