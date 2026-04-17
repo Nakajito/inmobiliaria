@@ -1,20 +1,12 @@
-# 1. Forzar estrictamente el uso de Python (ignorar PHP y Node)
 providers = ["python"]
 
-# 2. Fase de instalación: Usar uv para instalar dependencias
-[phases.install]
-cmds = [
-    "pip install uv",
-    "uv sync --frozen"
-]
+# Eliminamos [phases.install] para que Nixpacks instale uv y las dependencias automáticamente usando tu uv.lock
 
-# 3. Fase de construcción: Preparar estáticos y base de datos de Django
 [phases.build]
 cmds = [
     "uv run python manage.py collectstatic --noinput",
     "uv run python manage.py migrate"
 ]
 
-# 4. Comando de arranque: Iniciar Gunicorn
 [start]
 cmd = "uv run gunicorn aperture.wsgi:application --bind 0.0.0.0:8000 --workers 3"
