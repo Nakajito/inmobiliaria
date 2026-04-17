@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 
+import dj_database_url
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,25 +57,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "aperture.wsgi.application"
 
-DB_ENGINE = os.getenv("DB_ENGINE", "postgres")
-if DB_ENGINE == "sqlite":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DB_NAME", "aperture"),
-            "USER": os.getenv("DB_USER", "aperture"),
-            "PASSWORD": os.getenv("DB_PASSWORD", "aperture"),
-            "HOST": os.getenv("DB_HOST", "127.0.0.1"),
-            "PORT": os.getenv("DB_PORT", "5432"),
-        }
-    }
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.getenv(
+            "DATABASE_URL",
+            f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        ),
+        conn_max_age=int(os.getenv("DB_CONN_MAX_AGE", "600")),
+        conn_health_checks=True,
+        ssl_require=os.getenv("DB_SSL_REQUIRE", "False").lower() == "true",
+    )
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
