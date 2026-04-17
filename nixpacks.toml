@@ -1,12 +1,9 @@
 providers = ["python"]
 
-# Eliminamos [phases.install] para que Nixpacks instale uv y las dependencias automáticamente usando tu uv.lock
-
 [phases.build]
 cmds = [
-    "uv run python manage.py collectstatic --noinput",
-    "uv run python manage.py migrate"
+    "uv run python manage.py collectstatic --noinput"
 ]
 
 [start]
-cmd = "uv run gunicorn aperture.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+cmd = "uv run python manage.py migrate && uv run gunicorn aperture.wsgi:application --bind 0.0.0.0:8000 --workers 3"
