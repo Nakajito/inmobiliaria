@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block title %}Properties — {{ site_settings.brand_name }}{% endblock %}
+
+{% block content %}
+<main class="pt-32 pb-20 px-8 max-w-screen-2xl mx-auto">
+  <header class="mb-16">
+    <h1 class="font-headline text-5xl md:text-7xl text-primary tracking-tight mb-4">Aurelian Collection</h1>
+    <p class="text-on-primary-container text-lg max-w-2xl leading-relaxed">
+      A curated collection of the world's most architectural and emotionally resonant properties. Find your sanctuary in the monolith.
+    </p>
+  </header>
+
+  <form method="get" class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+    <div class="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-4 gap-6 bg-surface-container-lowest p-8 shadow-[0_4px_40px_rgba(0,0,0,0.04)]">
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Location</label>
+        <select name="location" class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+          <option value="">All Destinations</option>
+          {% for loc in locations %}
+            <option value="{{ loc.slug }}" {% if selected.location == loc.slug %}selected{% endif %}>{{ loc }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Property Type</label>
+        <select name="type" class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+          <option value="">Any Type</option>
+          {% for t in property_types %}
+            <option value="{{ t.slug }}" {% if selected.type == t.slug %}selected{% endif %}>{{ t.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Price Range</label>
+        <select name="price" class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+          <option value="">Any Price</option>
+          <option value="2-5" {% if selected.price == "2-5" %}selected{% endif %}>$2M - $5M</option>
+          <option value="5-15" {% if selected.price == "5-15" %}selected{% endif %}>$5M - $15M</option>
+          <option value="15-50" {% if selected.price == "15-50" %}selected{% endif %}>$15M - $50M</option>
+          <option value="50+" {% if selected.price == "50+" %}selected{% endif %}>$50M+</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Search</label>
+        <input type="text" name="q" value="{{ selected.q }}" placeholder="Destination or keyword"
+               class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium"/>
+      </div>
+    </div>
+    <div class="flex gap-4">
+      <a href="{% url 'properties:listing' %}" class="flex items-center gap-2 bg-surface-container-high px-6 py-4 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-xl">refresh</span>
+        <span class="font-label text-xs tracking-widest uppercase">Reset</span>
+      </a>
+      <button type="submit" class="gold-gradient text-on-secondary px-8 py-4 font-label text-xs tracking-widest uppercase font-bold shadow-lg hover:scale-105 transition-transform">
+        Refine Search
+      </button>
+    </div>
+  </form>
+
+  {% if properties %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+      {% for p in properties %}
+        <div {% if forloop.counter|divisibleby:3 == False and forloop.counter0 != 0 and forloop.counter|add:"-2"|divisibleby:3 %}class="lg:mt-12"{% endif %}>
+          {% include "partials/property_card.html" with property=p %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.has_other_pages %}
+    <nav class="mt-32 flex justify-center items-center gap-4">
+      {% if page_obj.has_previous %}
+        <a class="p-4 hover:bg-surface-container-high transition-colors" href="?{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </a>
+      {% endif %}
+      <div class="flex items-center gap-2">
+        {% for num in page_obj.paginator.page_range %}
+          <a class="w-10 h-10 flex items-center justify-center font-label text-sm {% if num == page_obj.number %}border-b-2 border-secondary text-primary{% else %}text-on-primary-container hover:text-primary{% endif %}"
+             href="?{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}page={{ num }}">{{ num|stringformat:"02d" }}</a>
+        {% endfor %}
+      </div>
+      {% if page_obj.has_next %}
+        <a class="p-4 hover:bg-surface-container-high transition-colors" href="?{% for k,v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  {% else %}
+    <div class="py-32 text-center">
+      <p class="font-serif text-3xl text-primary mb-4">No properties match your criteria.</p>
+      <a href="{% url 'properties:listing' %}" class="font-label uppercase tracking-widest text-xs border-b-2 border-secondary pb-1 hover:text-secondary">Reset filters</a>
+    </div>
+  {% endif %}
+</main>
+{% endblock %}

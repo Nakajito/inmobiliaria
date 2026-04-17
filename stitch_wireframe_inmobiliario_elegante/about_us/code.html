@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Aperture Estate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "on-primary-container": "#8a8888",
+                    "secondary-fixed-dim": "#e9c176",
+                    "surface-container-high": "#e8e8e8",
+                    "outline": "#747878",
+                    "inverse-surface": "#2f3131",
+                    "surface-dim": "#dadada",
+                    "on-surface": "#1a1c1c",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-fixed": "#ffdea5",
+                    "on-secondary-container": "#785a1a",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "tertiary": "#735c00",
+                    "surface-bright": "#f9f9f9",
+                    "surface": "#f9f9f9",
+                    "inverse-primary": "#c8c6c5",
+                    "tertiary-fixed": "#ffe088",
+                    "on-secondary-fixed": "#261900",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#241a00",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface-variant": "#444748",
+                    "on-primary-fixed": "#1c1b1b",
+                    "secondary": "#775a19",
+                    "on-primary-fixed-variant": "#474746",
+                    "tertiary-container": "#cca730",
+                    "background": "#f9f9f9",
+                    "primary": "#0a0a0a",
+                    "error": "#ba1a1a",
+                    "primary-container": "#212121",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-container": "#4f3e00",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "outline-variant": "#c4c7c7",
+                    "primary-fixed": "#e5e2e1",
+                    "surface-tint": "#5f5e5e",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fed488",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .aperture-mask {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container">
+<!-- TopAppBar Navigation -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+<div class="font-serif text-2xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">Aperture Estate</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">Home</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">Properties</a>
+<a class="text-zinc-900 dark:text-zinc-50 border-b-2 border-amber-700 dark:border-amber-500 pb-1" href="#">About</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-sm font-label uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform duration-300 active:scale-95">
+                Book a Viewing
+            </button>
+</nav>
+</header>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section: The Curated Monolith -->
+<section class="relative min-h-[819px] flex items-center px-8 md:px-16 max-w-screen-2xl mx-auto py-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-6 z-10">
+<span class="label-md uppercase tracking-[0.2em] text-secondary font-bold text-xs mb-6 block">Established 1984</span>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-primary mb-8">
+                        The Art of <br/><i class="font-normal italic">Curation.</i>
+</h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-md leading-relaxed">
+                        We don't just list properties; we curate architectural legacies. Every estate in our portfolio is a testament to timeless design and unparalleled craftsmanship.
+                    </p>
+</div>
+<div class="md:col-span-6 relative">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden aperture-mask">
+<img alt="Luxury Estate" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" data-alt="Monochromatic high-angle shot of a brutalist concrete villa with sharp lines and floor-to-ceiling windows surrounded by pine trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1OZ8PmhGvEiHWfC54al2bP8-gpkhGBliJrFvCOx2jZQM9ZoXt7Lcosrra78u4DawHDOWpO0zrn-EyAzwO5HzZE7pBGFzyMKKtUXLgT39geYAXW7N_oDHMsUUsSMCcDH7zU2-TBMDLZj4aRNAxhu6R6JBkI5ZehZicdm5dNioqLhYQHd3S7jFpLqPjVu-ajSOA6blV9w_blaaOoSlOa_FpuGtzHO63B9rfpAx6siMoxLLPehLumoAcOhLO7yT96PbGPBDKNSI-d5E"/>
+</div>
+<div class="absolute -bottom-10 -left-10 md:-left-20 w-64 h-80 hidden md:block bg-surface-container-lowest shadow-[0_4px_40px_rgba(0,0,0,0.04)] overflow-hidden">
+<img alt="Interior Detail" class="w-full h-full object-cover" data-alt="Interior of a luxury home featuring a marble kitchen island with soft gold accents and warm ambient morning lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Y-molySCtSPLayVI3ygSj-UoMBMzrpN7lEzu_ulIJA_AKfLyGY3zv8GQGExyPpQkanltrV1vEpOzLT6HCyKU-MtRrB4KSM-MbOIy8o8HqqFVJ4yfSWJxQtsY4BivChWhvClCiqEH5QuqVwQ1aXSOTtZRcc5U4nRJKoHqjYGoyPLPogvoLiKHjUr9PTf3F_SEVnUPnVJhhYM6gCFh2bHqnlWgqcpIG4EZGzSgD59T-Dp4c9L614XqW7_XXcvpU9iEW88J0SXWhq4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Story: Asymmetric Editorial Layout -->
+<section class="py-32 bg-surface-container-low px-8 md:px-16">
+<div class="max-w-screen-2xl mx-auto">
+<div class="flex flex-col md:flex-row gap-24 items-start">
+<div class="md:w-1/3 sticky top-32">
+<h2 class="font-headline text-4xl md:text-5xl text-primary leading-tight">Our <br/>Foundation</h2>
+<div class="w-12 h-1 bg-secondary mt-8"></div>
+</div>
+<div class="md:w-2/3 space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<p class="font-body text-xl leading-relaxed text-on-surface">
+                                Founded with a vision to bridge the gap between high-art and real estate, Aperture Estate emerged from the belief that a home is the most significant sculpture one will ever inhabit.
+                            </p>
+<p class="font-body text-lg leading-relaxed text-on-surface-variant">
+                                For four decades, we have operated at the intersection of architectural heritage and modern luxury. Our team serves as custodians of excellence, ensuring that every transaction honors the soul of the structure.
+                            </p>
+</div>
+<div class="aspect-[21/9] overflow-hidden bg-surface">
+<img alt="Architecture" class="w-full h-full object-cover" data-alt="Wide panoramic shot of a minimalist glass skyscraper reflecting a dramatic sunset sky in a metropolitan district" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbu8TOe5WN4W4Z00tVxD-eiT3nTcTe5M2XLUWGS4MljbH4TiOrS6_ijZoxL9PjsAjFmJlN1pvgKz4M4gL9J2_xDTwHxZQmPnauJtdPJaIeEQ49aF-7ozcsahx8RlvZnAP9rZkY5BHgdEH3mz50HB7IMNA4qbYn0HTKumGEFuZf-F87OJhxFtDUaJZnIfs55FKTJwUaVSYHKFq6jVDr6tpiap5Ee3BDzyvb2c4d8lhAZCsBmwBIl6Fm0hB0cxcJmfdwTbul26WuhVo"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Philosophy: Tonal Depth & Ambient Shadows -->
+<section class="py-32 bg-white px-8 md:px-16 relative overflow-hidden">
+<div class="max-w-screen-2xl mx-auto relative z-10">
+<div class="text-center max-w-3xl mx-auto mb-24">
+<span class="label-md uppercase tracking-[0.1em] text-secondary-fixed-dim font-medium text-sm mb-4 block">The Philosophy</span>
+<h2 class="font-headline text-5xl md:text-6xl text-primary mb-8 italic">Defined by Discernment</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">architecture</span>
+<h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Architectural Integrity</h3>
+<p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">We represent only those properties that demonstrate a clear, uncompromising design language.</p>
+</div>
+<!-- Card 2 -->
+<div class="p-12 bg-surface-container-low group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">verified</span>
+<h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Bespoke Curation</h3>
+<p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">Each client relationship is handled with the precision of a private gallery acquisition.</p>
+</div>
+<!-- Card 3 -->
+<div class="p-12 bg-surface-container-lowest group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-secondary mb-8 block group-hover:text-on-primary">public</span>
+<h3 class="font-headline text-2xl mb-4 group-hover:text-on-primary">Global Perspective</h3>
+<p class="font-body text-on-surface-variant group-hover:text-on-primary-container leading-relaxed">Our network spans continents, connecting rare architecture with discerning global stewards.</p>
+</div>
+</div>
+</div>
+<!-- Decorative Ghost Text -->
+<div class="absolute bottom-0 right-0 font-headline text-[15rem] leading-none text-zinc-100 -mb-20 select-none -z-0">EXCELLENCE</div>
+</section>
+<!-- Team Section: Professional Portraits -->
+<section class="py-32 px-8 md:px-16 max-w-screen-2xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline text-5xl md:text-6xl text-primary mb-6">Our Stewards</h2>
+<p class="font-body text-lg text-on-surface-variant">A specialized team of architectural historians, design consultants, and real estate veterans.</p>
+</div>
+<button class="font-label uppercase tracking-widest text-xs border-b-2 border-primary pb-2 hover:text-secondary hover:border-secondary transition-all">View All Directors</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+<!-- Agent 1 -->
+<div class="group relative overflow-hidden aspect-[3/4] bg-zinc-200">
+<img alt="Julian Vane" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Professional portrait of a middle-aged man in a charcoal suit, minimalist aesthetic with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXFnTuoAjMLSH0zEVlLbJfVRJiKpjO51FZpH4YrCxDF1dW5rfWwkStY0dY1zWnKSUW2pVCAOy6REA0cCJaBO7UqMAXWurUk8BdYjsXcxEZE-hwkl0m7KJJnQz6wAnllBErEn9i_hTjKsq05Ff8TI_MOx5AJ7lLkHLKkKquFvbtnfj5E_BfkC-B_yKXnacOac8V-PAyyA75Jx6C8HLRCy99K9L55iCwilCVQZB4KcpvNO6cHWo0N5IOVr4MJGSTkz05A5TCMp-PP48"/>
+<div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
+<h4 class="font-headline text-xl text-white">Julian Vane</h4>
+<p class="text-on-primary-container text-sm uppercase tracking-wider">Managing Partner</p>
+</div>
+</div>
+<!-- Agent 2 -->
+<div class="group relative overflow-hidden aspect-[3/4] bg-zinc-300">
+<img alt="Elena Thorne" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Professional portrait of a woman in a black turtleneck, elegant pose with natural side-lighting against a grey wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtIhaJ0xPHya5GIaMggbIMp2aQ5Ao689sGUlmwlFw490CXkQNP0D8-qUMvbZLOAdAYJls6CwaHIvAd0vnNNiAeUT1I7GEJsXuA5Unvm6T_9iy0L8dzVKjR2iK9g8f1ketX1laq-wa3Dw0L2SUGoQAjQO09QJ_qGI4Khq1dDUtVFrKbSV7U6OGX6n1ogP5K7e-1lyUD2Sx5kdbS1UPBQSX-gMyOItO4gxqQQxToauL6tDK-3RhWYhz2zOs-ClN7G-RIg28Yzw0Fkw4"/>
+<div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
+<h4 class="font-headline text-xl text-white">Elena Thorne</h4>
+<p class="text-on-primary-container text-sm uppercase tracking-wider">Senior Consultant</p>
+</div>
+</div>
+<!-- Agent 3 -->
+<div class="group relative overflow-hidden aspect-[3/4] bg-zinc-200">
+<img alt="Marcus Sterling" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Man in high-end tailored suit standing in a modern architectural lobby with blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb-nPetKv7raZj9BWwLQNMuteLJ33Pf2EMZUMBsIC1fGFSCaRd9gQxyULRo2RtDDy3kVpEcwivY7GSUZHc8OnxFX3FQkdq18LuOfCsVFCir9OhxDx3UTlbzLx6WWDghfPTkemoWvYjQIyitG4_d591rkp03m1B5bvgfnM9eizlGR9fxkBaTr8e7f8rS4nKqGeXVYE1kJUWwh-Bj7UdPcQaJZ7JR8rvKFQ-fDCcRRnVXoKXW0Bi2OL8c9b5cCtl2_LBPnhW-5K1lf8"/>
+<div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
+<h4 class="font-headline text-xl text-white">Marcus Sterling</h4>
+<p class="text-on-primary-container text-sm uppercase tracking-wider">Head of Acquisitions</p>
+</div>
+</div>
+<!-- Agent 4 -->
+<div class="group relative overflow-hidden aspect-[3/4] bg-zinc-300">
+<img alt="Sophia Aris" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Confident woman smiling in a minimalist office setting, soft professional lighting and neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDhVwTLjWw_-VdDwxeHJ7nk8UUaqWQrNKyAagX1ninkohvhd_i9vjxXdKNy8c9H44J8SQ9i4whqHmfq3cpAr-QPgLKVNwEebPRK3-iDx9qrqHURZyVeRImR88Skm_TVq-FL5jjyhZf-B2LGti77vaIBjO5kStnvYQdMYTwaOH5UQHJTpZFYZ-AIUZY2tbm9kMbu6Rgi5LrwNUTQbh970CBv29LkukEaA8qrhGfUYIFCp2cND0KgFZppl1mBt1GqDTNp0at-4FfOwc"/>
+<div class="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-primary/90 to-transparent">
+<h4 class="font-headline text-xl text-white">Sophia Aris</h4>
+<p class="text-on-primary-container text-sm uppercase tracking-wider">Design Liaison</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section: Join the Network -->
+<section class="py-32 px-8 md:px-16 bg-primary text-on-primary">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-1/2">
+<h2 class="font-headline text-5xl md:text-7xl mb-8 leading-tight">Join the <br/><i class="italic font-normal">Inner Circle.</i></h2>
+<p class="text-on-primary-container text-lg mb-12 max-w-md leading-relaxed">
+                        Become part of our global network of architecture enthusiasts and real estate investors. Receive priority access to unlisted estates.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-br from-secondary to-secondary-container text-on-secondary px-10 py-4 font-label uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform">Inquire Now</button>
+<button class="border border-outline-variant/30 text-on-primary px-10 py-4 font-label uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">Request a Portfolio</button>
+</div>
+</div>
+<div class="md:w-1/2 w-full">
+<div class="p-12 border border-outline-variant/20 space-y-8">
+<div>
+<p class="label-md uppercase tracking-widest text-secondary mb-2 text-xs">Global HQ</p>
+<p class="font-headline text-2xl">42 Mayfair Square, London</p>
+</div>
+<div>
+<p class="label-md uppercase tracking-widest text-secondary mb-2 text-xs">Email</p>
+<p class="font-headline text-2xl">private@aperture.estate</p>
+</div>
+<div>
+<p class="label-md uppercase tracking-widest text-secondary mb-2 text-xs">Phone</p>
+<p class="font-headline text-2xl">+44 20 7946 0128</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-100 dark:bg-zinc-900 mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
+<div class="md:col-span-1">
+<div class="font-serif text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-6">Aperture Estate</div>
+<p class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium leading-relaxed">
+                    Crafting legacies in stone and glass since 1984.
+                </p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label uppercase tracking-widest text-xs font-bold text-primary">Discover</h5>
+<ul class="space-y-3">
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">The Portfolio</a></li>
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">Our Story</a></li>
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">Architects</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label uppercase tracking-widest text-xs font-bold text-primary">Legal</h5>
+<ul class="space-y-3">
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">Privacy Policy</a></li>
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">Terms of Service</a></li>
+<li><a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors duration-200" href="#">Global Press</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label uppercase tracking-widest text-xs font-bold text-primary">Newsletter</h5>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 font-label text-xs tracking-widest uppercase" placeholder="YOUR EMAIL" type="email"/>
+<button class="absolute right-0 bottom-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-zinc-200 dark:border-zinc-800 text-center">
+<p class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-[10px] font-medium">© 2024 Aperture Editorial Real Estate. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

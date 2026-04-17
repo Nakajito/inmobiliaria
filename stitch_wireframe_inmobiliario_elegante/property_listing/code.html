@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "on-primary-container": "#8a8888",
+                    "secondary-fixed-dim": "#e9c176",
+                    "surface-container-high": "#e8e8e8",
+                    "outline": "#747878",
+                    "inverse-surface": "#2f3131",
+                    "surface-dim": "#dadada",
+                    "on-surface": "#1a1c1c",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-fixed": "#ffdea5",
+                    "on-secondary-container": "#785a1a",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "tertiary": "#735c00",
+                    "surface-bright": "#f9f9f9",
+                    "surface": "#f9f9f9",
+                    "inverse-primary": "#c8c6c5",
+                    "tertiary-fixed": "#ffe088",
+                    "on-secondary-fixed": "#261900",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#241a00",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface-variant": "#444748",
+                    "on-primary-fixed": "#1c1b1b",
+                    "secondary": "#775a19",
+                    "on-primary-fixed-variant": "#474746",
+                    "tertiary-container": "#cca730",
+                    "background": "#f9f9f9",
+                    "primary": "#0a0a0a",
+                    "error": "#ba1a1a",
+                    "primary-container": "#212121",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-container": "#4f3e00",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "outline-variant": "#c4c7c7",
+                    "primary-fixed": "#e5e2e1",
+                    "surface-tint": "#5f5e5e",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fed488",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #775a19 0%, #fed488 100%);
+      }
+      .ambient-depth {
+        shadow: 0 4px 40px rgba(0,0,0,0.04);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+<div class="font-serif text-2xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">Aperture Estate</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">Home</a>
+<a class="text-zinc-900 dark:text-zinc-50 border-b-2 border-amber-700 dark:border-amber-500 pb-1" href="#">Properties</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">About</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-sans hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 font-sans font-bold hover:scale-[1.02] transition-transform duration-300 active:scale-95 rounded-sm">
+                Book a Viewing
+            </button>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-8 max-w-screen-2xl mx-auto">
+<!-- Hero Section Header -->
+<header class="mb-16">
+<h1 class="font-headline text-5xl md:text-7xl text-primary tracking-tight mb-4">Aurelian Estate</h1>
+<p class="text-on-primary-container text-lg max-w-2xl leading-relaxed">A curated collection of the world's most architectural and emotionally resonant properties. Find your sanctuary in the monolith.</p>
+</header>
+<!-- Search & Filter Bar -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+<div class="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-4 gap-6 bg-surface-container-lowest p-8 shadow-[0_4px_40px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col gap-2">
+<label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Location</label>
+<div class="relative">
+<select class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+<option>All Destinations</option>
+<option>French Riviera</option>
+<option>Tuscan Hills</option>
+<option>Swiss Alps</option>
+<option>Coastal California</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Property Type</label>
+<select class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+<option>Any Type</option>
+<option>Modernist Villa</option>
+<option>Heritage Manor</option>
+<option>Minimalist Loft</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Price Range</label>
+<select class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+<option>$2M - $5M</option>
+<option>$5M - $15M</option>
+<option>$15M - $50M</option>
+<option>$50M+</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-[10px] tracking-[0.1em] text-on-primary-container uppercase">Amenities</label>
+<select class="w-full border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary py-2 px-0 text-primary font-medium cursor-pointer">
+<option>All Amenities</option>
+<option>Private Vineyard</option>
+<option>Infinity Pool</option>
+<option>Helipad</option>
+</select>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 bg-surface-container-high px-6 py-4 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="map">map</span>
+<span class="font-label text-xs tracking-widest uppercase">View Map</span>
+</button>
+<button class="gold-gradient text-on-secondary px-8 py-4 font-label text-xs tracking-widest uppercase font-bold shadow-lg hover:scale-105 transition-transform">
+                    Refine Search
+                </button>
+</div>
+</div>
+<!-- Property Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+<!-- Property Card 1 -->
+<article class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modernist white concrete villa with large glass windows overlooking a calm Mediterranean bay at twilight with soft purple sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1rIxc-oveHGkBBv6D7W7rmCwd1y-TO9wdTnqZktG4lfeHmq0DJCKgdK7AOlYUXN8Ungw9pOwjCNfpCXdw6CHhy9CO0D9ozmZrU6J3lUIanP6xsZwXRdbocjWg5UbQdwbJifjoaIbGUE2yAQQBIiEj2JTDCa80nDp2SAJvbWQMFP4f3R9t27gbePunmq30MZoKaxS4kfsO-koxW9P4bGeplYZ7kyxjSWMqcM9DzB1-ohEPSqilYkm_t0C_WuD0a5VYZ3ECdg2HNmY"/>
+<div class="absolute top-4 left-4 gold-gradient px-3 py-1 text-[10px] font-bold tracking-widest text-on-secondary uppercase">Exclusive</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">The Alabaster Pavilion</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">St. Tropez, France</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>6 BEDS</span>
+<span>8 BATHS</span>
+<span>12,400 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$18,500,000</span>
+</div>
+</div>
+</article>
+<!-- Property Card 2 -->
+<article class="group cursor-pointer lg:mt-12">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Brutalist architectural home made of raw dark concrete and warm wood accents tucked into a misty forest landscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu-548UV-FBAUngkphyKpwoT6M5aN-f7-FiOKyNUwXhG49URvgqp-wyv4NUbAeqjKu2lFsGu6sXU_z_frgTgINsosoCo78z31uUZCqpjgElCW-rFxZxJemqHcm6ne0kThTAA8nIaFLtMmOZ7ZMaIhCSzFG1tcoyGhmWsB4APEQUZWdeRtUZFlMUy__HhEig_lBFoNXVWWoKjx-qB8PjxqD4g4KlOdMnGbc0edacvhp0jZmTobiX3S46UQ2IwbKjBoDFH1O8OLiDt4"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">Shadow &amp; Timber Lodge</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">Aspen, Colorado</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>5 BEDS</span>
+<span>5 BATHS</span>
+<span>8,200 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$12,900,000</span>
+</div>
+</div>
+</article>
+<!-- Property Card 3 -->
+<article class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sleek contemporary waterfront estate with a long infinity pool stretching toward the horizon of a turquoise ocean under bright sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCntvkKPO9vheLGNFOAM0bRa27Ga4C2oSsD4bF8JViJmX3W-9khlvwSoKIHWfIfTknxREAPigeKNO6m2PSTKcKIbO_WOqRiRkEcDxbt3sbmZpe3bJKOIidOEpif6wjXrpQb6N_zYarBVYb4R226iY6sqtyCODpP3OjLabj-CW6WECKgKXjzXYOVaqDJX-rHL67ytv4dvDJNuBTOvjSbJ9abW5R6zgoyIoDVRY7F-TNwsLdIuFuSn5yziLkKJ-Tfh3eEftEv_-IZeIE"/>
+<div class="absolute top-4 left-4 gold-gradient px-3 py-1 text-[10px] font-bold tracking-widest text-on-secondary uppercase">New Listing</div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">Horizon Point Estate</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">Malibu, California</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>7 BEDS</span>
+<span>9 BATHS</span>
+<span>15,000 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$34,000,000</span>
+</div>
+</div>
+</article>
+<!-- Property Card 4 -->
+<article class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Stately italian renaissance style stone villa surrounded by manicured cypress trees and lavender gardens in Tuscany" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDycMLd40P8AIhBuxxY82-JIeCJi3X9C5tOasB0gsuOJuWIIa-h6eCZkkoeI8LrPILlBQJs6XtK-misRoZkY-jA_znCpfO3eaH-rK4UaWdh-2OsEDkLk2Gq6e3ZwpL8j2oPealHtun3rt5mlQR9vd6RDLdwlEziNn3_TI1KXe1wiR2Eg-_eKEFH2okqH28xZe4Kmt2jIKHavkhBsL9rsvKck42iFf6qkgmW8wX2CtQNmqw4_IKCvGRvQAZEUKUC4-1IdvkaIleWVBQ"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">Villa di Smeraldo</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">Siena, Italy</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>12 BEDS</span>
+<span>14 BATHS</span>
+<span>24,000 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$42,000,000</span>
+</div>
+</div>
+</article>
+<!-- Property Card 5 -->
+<article class="group cursor-pointer lg:mt-12">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Interior of a luxury modern penthouse with floor to ceiling windows showing a glowing city skyline at night with designer furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeaqd3wEBYz-qMTEVl1BoCnWQpsAUWsvJL0UUJaB04xdP_UfFxUMSkIMOyM-cy22lESIeMKAvXwpWnj53k3U4DoLbJ5ITVreID-We4xMw3bZbtpCTuXXQ2TkZeylas6Zt3kKm03g_BLdc6yWWxvEfdmGyv9ioOLQwMDj-8YvmLXxRTBnafGDK3jurBMu4k4wF8FLp8KZArz1WAwXjrQ93FPKP5xKu6lKJynpNLlSRn_1n1DYmb2Lng00FjktPe-luaw69b4T8HoPk"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">The Zenith Penthouse</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">Manhattan, New York</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>3 BEDS</span>
+<span>4 BATHS</span>
+<span>6,500 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$27,500,000</span>
+</div>
+</div>
+</article>
+<!-- Property Card 6 -->
+<article class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 aspect-[4/5]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Ultra-minimalist black glass house reflecting a desert sunrise with sand dunes and Joshua trees in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZE4alGM7JQxZnAp_XpB8R_rHGz1SC88Hplfq5qwvpxxaIxE68zK-A-JGN0bioDiJv4RuYKkwgNTz_f_ZsyVIrg_EP8_tzOi2HEFTEOaBMexS82KUyoox-VStMKHLPs1sTEbfsKgaQf49--1ibsclo3055FnyGZWAssDterSFKRI1CfHbd2aPYDkXfQviLEaWQ96AkmNnwlEe8bsb5LXhBMJa72p5cbD6zCMKp-KACEjn5VaS60cr8zMZ0hn5vbuIN3XvpYnYEVkc"/>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline text-2xl text-primary mb-2">The Obsidian Sanctuary</h3>
+<p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">Joshua Tree, California</p>
+<div class="flex justify-between items-center">
+<div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+<span>4 BEDS</span>
+<span>3 BATHS</span>
+<span>4,200 SQFT</span>
+</div>
+<span class="font-headline text-xl text-secondary">$8,800,000</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<nav class="mt-32 flex justify-center items-center gap-4">
+<button class="p-4 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex items-center gap-2">
+<a class="w-10 h-10 flex items-center justify-center font-label text-sm border-b-2 border-secondary text-primary" href="#">01</a>
+<a class="w-10 h-10 flex items-center justify-center font-label text-sm text-on-primary-container hover:text-primary" href="#">02</a>
+<a class="w-10 h-10 flex items-center justify-center font-label text-sm text-on-primary-container hover:text-primary" href="#">03</a>
+<span class="px-2">...</span>
+<a class="w-10 h-10 flex items-center justify-center font-label text-sm text-on-primary-container hover:text-primary" href="#">12</a>
+</div>
+<button class="p-4 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</nav>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-100 dark:bg-zinc-900 border-t border-outline-variant/15">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-6">
+<div class="font-serif text-xl font-bold text-zinc-900 dark:text-zinc-50">Aperture Estate</div>
+<p class="font-sans text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400 leading-relaxed">Defining the architecture of modern luxury since 1994.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-sans uppercase tracking-[0.1em] text-xs font-bold text-zinc-900 dark:text-zinc-50">Quick Links</h4>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">Privacy Policy</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">Terms of Service</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">Cookie Settings</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">Global Press</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-sans uppercase tracking-[0.1em] text-xs font-bold text-zinc-900 dark:text-zinc-50">Connect</h4>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">Instagram</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">LinkedIn</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-sans uppercase tracking-[0.1em] text-xs font-medium hover:text-amber-600 transition-colors" href="#">The Journal</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-sans uppercase tracking-[0.1em] text-xs font-bold text-zinc-900 dark:text-zinc-50">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-2 font-sans text-xs tracking-widest focus:ring-0 focus:border-secondary transition-colors" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-secondary" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-outline-variant/10 text-center">
+<p class="font-sans uppercase tracking-[0.1em] text-[10px] font-medium text-zinc-500">© 2024 Aperture Editorial Real Estate. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

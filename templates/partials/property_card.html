@@ -1,0 +1,26 @@
+{% load humanize %}
+<a href="{{ property.get_absolute_url }}" class="group cursor-pointer block">
+  <div class="relative overflow-hidden mb-6 aspect-[4/5] bg-surface-container-high">
+    {% if property.cover_src %}
+      <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+           src="{{ property.cover_src }}" alt="{{ property.title }}"/>
+    {% endif %}
+    {% if property.status and property.status != 'active' %}
+      <div class="absolute top-4 left-4 gold-gradient px-3 py-1 text-[10px] font-bold tracking-widest text-on-secondary uppercase">
+        {{ property.get_status_display }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="flex flex-col">
+    <h3 class="font-headline text-2xl text-primary mb-2">{{ property.title }}</h3>
+    <p class="font-label text-xs tracking-[0.1em] text-on-primary-container uppercase mb-6">{{ property.location }}</p>
+    <div class="flex justify-between items-center gap-4">
+      <div class="flex gap-6 text-on-surface-variant font-label text-xs tracking-wider">
+        <span>{{ property.bedrooms }} BEDS</span>
+        <span>{{ property.bathrooms }} BATHS</span>
+        <span>{{ property.square_feet|intcomma }} SQFT</span>
+      </div>
+      <span class="font-headline text-xl text-secondary whitespace-nowrap">${{ property.price|floatformat:0|intcomma }}</span>
+    </div>
+  </div>
+</a>
