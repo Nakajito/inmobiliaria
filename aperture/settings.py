@@ -1,4 +1,5 @@
 """Django settings for aperture project."""
+
 import os
 from pathlib import Path
 
@@ -14,6 +15,12 @@ SECRET_KEY = os.getenv(
 )
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+
+# CSRF Trusted Origins (necesario para HTTPS y Proxies)
+csrf_trusted_env = os.getenv(
+    "CSRF_TRUSTED_ORIGINS", "http://localhost,http://127.0.0.1"
+)
+CSRF_TRUSTED_ORIGINS = csrf_trusted_env.split(",")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -70,7 +77,9 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
